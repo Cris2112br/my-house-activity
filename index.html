@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My House — 6th Grade (A1) — Enhanced</title>
+<style>
+  :root{--bg:#f6f9fc;--card:#fff;--muted:#475569;--accent:#0ea5a4;--ok:#16a34a;--warn:#b91c1c}
+  html,body{margin:0;padding:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#0b1220}
+  .wrap{max-width:880px;margin:18px auto;padding:0 16px}
+  .card{background:var(--card);border-radius:14px;box-shadow:0 10px 24px rgba(12,20,40,.06);padding:18px}
+  h1{font-size:22px;margin:0 0 8px}
+  .lead{margin:0;color:#475569}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .col{flex:1;min-width:240px}
+  label{display:block;font-weight:600;margin:10px 0 6px}
+  input,select{width:100%;padding:10px;border:1px solid #d1d5db;border-radius:10px;box-sizing:border-box;background:#fbfeff}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{display:inline-flex;align-items:center;gap:6px;border:1px solid #cbd5e1;border-radius:999px;padding:6px 10px;background:#fff}
+  .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer}
+  .primary{background:#0ea5a4;color:#fff}
+  .ghost{background:#eef2ff;color:#1e293b}
+  .muted{background:#e2e8f0;color:#0f172a}
+  .output{white-space:pre-line;background:#0f172a;color:#e6f1ff;border-radius:12px;padding:12px;margin-top:12px;min-height:56px}
+  .msg{margin-top:8px;font-size:14px}
+  .msg.ok{color:#16a34a}
+  .msg.err{color:#b91c1c}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>🏠 My House — Interactive (6th Grade, A1)</h1>
+      <p class="lead">Choose options or type your own answers (Other). Click <strong>Generate text</strong> to create your short paragraph.</p>
+
+      <form id="form">
+        <label>Where do you live?</label>
+        <div class="row">
+          <div class="col">
+            <select id="size">
+              <option value="">Select size</option>
+              <option>small</option>
+              <option>medium</option>
+              <option>big</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="sizeOther" class="hidden" type="text" placeholder="Type a word (e.g. cozy, tiny)" />
+          </div>
+        </div>
+
+        <label>Who do you live with? (select and/or type)</label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="fam" value="parents"> parents</label>
+          <label class="chip"><input type="checkbox" name="fam" value="mother"> mother</label>
+          <label class="chip"><input type="checkbox" name="fam" value="father"> father</label>
+          <label class="chip"><input type="checkbox" name="fam" value="grandparents"> grandparents</label>
+          <label class="chip"><input type="checkbox" name="fam" value="brother(s)"> brother(s)</label>
+          <label class="chip"><input type="checkbox" name="fam" value="sister(s)"> sister(s)</label>
+        </div>
+        <input id="famOther" type="text" placeholder="Other (type, optional). e.g. aunt, cousin" />
+
+        <div class="row">
+          <div class="col">
+            <label>Brothers</label>
+            <select id="bros">
+              <option value="">no brothers</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="brosOther" class="hidden" type="number" min="0" placeholder="Type a number" />
+          </div>
+          <div class="col">
+            <label>Sisters</label>
+            <select id="sis">
+              <option value="">no sisters</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="sisOther" class="hidden" type="number" min="0" placeholder="Type a number" />
+          </div>
+        </div>
+
+        <label>How many rooms are in your house?</label>
+        <div class="row">
+          <div class="col">
+            <select id="roomsNum">
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="roomsNumOther" class="hidden" type="number" min="1" placeholder="Type a number" />
+          </div>
+          <div class="col">
+            <label>Rooms (check and/or type)</label>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="room" value="living room"> living room</label>
+              <label class="chip"><input type="checkbox" name="room" value="kitchen"> kitchen</label>
+              <label class="chip"><input type="checkbox" name="room" value="bathroom"> bathroom</label>
+              <label class="chip"><input type="checkbox" name="room" value="bedroom"> bedroom</label>
+              <label class="chip"><input type="checkbox" name="room" value="dining room"> dining room</label>
+              <label class="chip"><input type="checkbox" name="room" value="garage"> garage</label>
+            </div>
+            <input id="roomsOther" type="text" placeholder="Other rooms (type, optional). e.g. balcony, office" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label>How many bedrooms?</label>
+            <select id="beds">
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="bedsOther" class="hidden" type="number" min="1" placeholder="Type a number" />
+          </div>
+          <div class="col">
+            <label>My favorite room is...</label>
+            <select id="favRoom">
+              <option>my bedroom</option>
+              <option>the living room</option>
+              <option>the kitchen</option>
+              <option value="other">Other (type)</option>
+            </select>
+            <input id="favRoomOther" class="hidden" type="text" placeholder="Type your favorite room" />
+          </div>
+        </div>
+
+        <label>Furniture / items in the favorite room (check and/or type)</label>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="item" value="a bed"> a bed</label>
+          <label class="chip"><input type="checkbox" name="item" value="pillows"> pillows</label>
+          <label class="chip"><input type="checkbox" name="item" value="a wardrobe"> a wardrobe</label>
+          <label class="chip"><input type="checkbox" name="item" value="a computer"> a computer</label>
+          <label class="chip"><input type="checkbox" name="item" value="a desk"> a desk</label>
+          <label class="chip"><input type="checkbox" name="item" value="a chair"> a chair</label>
+          <label class="chip"><input type="checkbox" name="item" value="books"> books</label>
+          <label class="chip"><input type="checkbox" name="item" value="a lamp"> a lamp</label>
+          <label class="chip"><input type="checkbox" name="item" value="a sofa"> a sofa</label>
+          <label class="chip"><input type="checkbox" name="item" value="a TV"> a TV</label>
+          <label class="chip"><input type="checkbox" name="item" value="a coffee table"> a coffee table</label>
+          <label class="chip"><input type="checkbox" name="item" value="a carpet"> a carpet</label>
+          <label class="chip"><input type="checkbox" name="item" value="a fridge"> a fridge</label>
+          <label class="chip"><input type="checkbox" name="item" value="a stove"> a stove</label>
+          <label class="chip"><input type="checkbox" name="item" value="a table"> a table</label>
+          <label class="chip"><input type="checkbox" name="item" value="chairs"> chairs</label>
+          <label class="chip"><input type="checkbox" name="item" value="a sink"> a sink</label>
+        </div>
+        <input id="itemsOther" type="text" placeholder="Other items (type, optional). e.g. guitar, poster" />
+
+        <div class="btns">
+          <button type="button" class="primary" id="gen">Generate text</button>
+          <button type="button" class="ghost" id="copy">Copy text</button>
+          <button type="button" class="muted" id="clear">Clear</button>
+        </div>
+
+        <div class="msg err" id="msg" style="display:none"></div>
+        <div class="output" id="out" aria-live="polite">Your text will appear here.</div>
+      </form>
+    </div>
+  </div>
+
+<script>
+  const $ = (id)=>document.getElementById(id);
+  const msg = $('msg'), out = $('out');
+
+  function t(v){ return (v||'').trim(); }
+  function esc(s){ return (s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+  function syncOther(selId, inpId){
+    const sel=$(selId), inp=$(inpId);
+    function toggle(){ inp.classList.toggle('hidden', sel.value!=='other'); if(sel.value!=='other') inp.value=''; }
+    sel.addEventListener('change', toggle); toggle();
+  }
+  ['size','bros','sis','roomsNum','beds','favRoom'].forEach(id=>syncOther(id, id+'Other'));
+
+  function joinList(arr){
+    if(arr.length===1) return arr[0];
+    if(arr.length===2) return arr[0]+' and '+arr[1];
+    return arr.slice(0,-1).join(', ') + ' and ' + arr[arr.length-1];
+  }
+
+  function buildText(f){
+    const parts = [];
+    let s1 = 'I live in a ' + esc(f.size) + ' house';
+    const famParts = [];
+    if(f.family.length) famParts.push(f.family.join(', '));
+    if(f.famOther) famParts.push(f.famOther);
+    if(f.brosNum>0) famParts.push(f.brosNum + ' ' + (f.brosNum==1 ? 'brother' : 'brothers'));
+    if(f.sisNum>0) famParts.push(f.sisNum + ' ' + (f.sisNum==1 ? 'sister' : 'sisters'));
+    if(famParts.length) s1 += ' with ' + esc(famParts.join(', '));
+    parts.push(s1 + '.');
+
+    const roomCount = f.roomsTotal;
+    const roomsList = [].concat(f.roomsChecked);
+    if(f.roomsOther) roomsList.push(...f.roomsOther.split(',').map(x=>t(x)).filter(Boolean));
+    const listForSentence = roomsList.map(r=> r==='bedroom' ? (f.bedrooms + ' ' + (f.bedrooms==1?'bedroom':'bedrooms')) : ('1 ' + r));
+    let s2 = 'There are ' + roomCount + ' ' + (roomCount==1?'room':'rooms') + ' in my house';
+    if(listForSentence.length) s2 += ': ' + listForSentence.join(', ');
+    parts.push(s2 + '.');
+
+    let fav = f.favRoom==='other' ? f.favRoomOther : f.favRoom;
+    if(fav==='my bedroom' || fav==='bedroom') parts.push('My favorite room is my bedroom.');
+    else if(fav.startsWith('the ')) parts.push('My favorite room is ' + esc(fav) + '.');
+    else parts.push('My favorite room is the ' + esc(fav) + '.');
+
+    const items = [].concat(f.itemsChecked);
+    if(f.itemsOther) items.push(...f.itemsOther.split(',').map(x=>t(x)).filter(Boolean));
+    if(items.length){
+      const pluralWords = ['pillows','books','chairs'];
+      const useAre = items.length>1 || items.some(it=>pluralWords.includes(t(it)));
+      const there = useAre ? 'There are ' : 'There is ';
+      const itemsText = items.length===1 ? items[0] : items.slice(0,-1).join(', ') + ' and ' + items.slice(-1);
+      const roomRef = (fav==='my bedroom'||fav==='bedroom') ? 'my bedroom' : (fav.startsWith('the ')? fav : 'the '+fav);
+      parts.push(there + esc(itemsText) + ' in ' + esc(roomRef) + '.');
+    }
+
+    return parts.join('\\n');
+  }
+
+  $('gen').addEventListener('click', ()=>{
+    msg && (msg.style.display='none', msg.textContent='');
+
+    const sizeSel = $('size').value;
+    const f = {
+      size: sizeSel==='other' ? t($('sizeOther').value||'small') : t(sizeSel||'small'),
+      family: Array.from(document.querySelectorAll('input[name=fam]:checked')).map(el=>el.value),
+      famOther: t($('famOther').value),
+      brosNum: ( $('bros').value==='other' ? parseInt($('brosOther').value||'0',10) : parseInt($('bros').value||'0',10) ) || 0,
+      sisNum: ( $('sis').value==='other' ? parseInt($('sisOther').value||'0',10) : parseInt($('sis').value||'0',10) ) || 0,
+      roomsTotal: ( $('roomsNum').value==='other' ? parseInt($('roomsNumOther').value||'1',10) : parseInt($('roomsNum').value||'1',10) ) || 1,
+      roomsChecked: Array.from(document.querySelectorAll('input[name=room]:checked')).map(el=>el.value),
+      roomsOther: t($('roomsOther').value),
+      bedrooms: ( $('beds').value==='other' ? parseInt($('bedsOther').value||'1',10) : parseInt($('beds').value||'1',10) ) || 1,
+      favRoom: $('favRoom').value,
+      favRoomOther: t($('favRoomOther').value),
+      itemsChecked: Array.from(document.querySelectorAll('input[name=item]:checked')).map(el=>el.value),
+      itemsOther: t($('itemsOther').value)
+    };
+
+    if(!f.size){
+      out.textContent = 'Please select or type your house size.';
+      return;
+    }
+
+    out.textContent = buildText(f);
+    out.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  $('clear').addEventListener('click', ()=>{
+    document.querySelectorAll('input, textarea').forEach(el=>{ if(el.type==='checkbox') el.checked=false; else el.value=''; });
+    document.querySelectorAll('select').forEach(s=>s.value='');
+    ['size','bros','sis','roomsNum','beds','favRoom'].forEach(id=>{ const inp=document.getElementById(id+'Other'); if(inp) inp.classList.add('hidden'); });
+    out.textContent = 'Your text will appear here.';
+    msg && (msg.style.display='none', msg.textContent='');
+  });
+
+  $('copy').addEventListener('click', ()=>{
+    const textToCopy = out.textContent || '';
+    if(!textToCopy || textToCopy === 'Your text will appear here.') {
+      if(msg){ msg.textContent = 'Generate a text before copying.'; msg.className = 'msg err'; msg.style.display = 'block'; }
+      return;
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(textToCopy).then(()=>{
+        if(msg){ msg.textContent = 'Text copied to clipboard.'; msg.className = 'msg ok'; msg.style.display = 'block'; }
+      }, ()=>fallbackCopy(textToCopy));
+    } else { fallbackCopy(textToCopy); }
+  });
+
+  function fallbackCopy(txt){
+    const ta = document.createElement('textarea');
+    ta.value = txt;
+    ta.style.position='fixed'; ta.style.opacity='0'; ta.style.left='-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    document.body.removeChild(ta);
+    if(msg){ msg.textContent = 'Text copied (fallback).'; msg.className = 'msg ok'; msg.style.display = 'block'; }
+  }
+</script>
+</body>
+</html>
